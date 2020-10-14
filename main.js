@@ -23,7 +23,7 @@ function createWindow () {
   const bounds = tray.getBounds();
 
   // mainWindow.setPosition(bounds.x, bounds.y);
-  mainWindow.setPosition(2000,0 );
+  mainWindow.setPosition(0,0 );
 
 
   tray.on('click', () => {

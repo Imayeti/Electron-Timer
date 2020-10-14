@@ -19,106 +19,14 @@
         <button @click="setTimerPresetAmount(45)" type="button" name="button" class="btn-sm btn-primary">45 minutes</button>
       </div>
 
-<!-- <h1 class="mt-5">{{timerAmountMinutes}} min</h1> -->
-      <!-- <h1>{{timerAmountSeconds}}</h1> -->
-
-
       <div class="chart " :class="percentClass">
       <p>{{timerAmountMinutes}}</p>
       </div>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-
-    <script type="text/javascript">
-
-    // console.log(document.getElementById('timerAmountMinutes').value);
-
-
-
-     new Vue({
-        el: app,
-        data: {
-          timerRunning: false,
-          timerAmountSeconds: "60",
-          timerAmountMinutes: 0,
-          originalTimerAmount: 0,
-          minutesInterval: "",
-          inputValue: "",
-
-
-        },
-        computed: {
-          percentClass() {
-            return "x-" + this.percent;
-          },
-          percent() {
-            return Math.floor((this.timerAmountMinutes / this.originalTimerAmount ) * 100)  ;
-          }
-        },
-        methods: {
-
-          startTimer() {
-            // let timeInputField = document.getElementById('timerAmountMinutes').value;
-
-            if(this.inputValue){
-              this.timerAmountSeconds = 60;
-              this.originalTimerAmount = this.inputValue;
-              this.timerAmountMinutes = this.inputValue;
-              console.log("this.timerAmountMinutes", this.timerAmountMinutes);
-            }
-
-            // this.timerAmountSeconds = this.timerAmountMinutes * 60;
-            if (!this.timerRunning) {
-             this.timerAmountSeconds = 60;
-             this.minutesInterval = setInterval( () => {
-                this.timerAmountSeconds -= 1;
-              },.001);
-            }
-            this.inputValue = "";
-
-            this.timerRunning = true;
-          },
-          stopTimer() {
-            clearInterval(this.minutesInterval);
-            this.timerRunning = false;
-          },
-          setTimerPresetAmount(mins) {
-            this.timerRunning = false;
-            clearInterval(this.minutesInterval);
-            console.log(mins);
-            this.originalTimerAmount = mins;
-            this.timerAmountMinutes = mins;
-            this.startTimer();
-          }
-        },
-        watch: {
-          timerAmountSeconds : function () {
-            if( this.timerAmountSeconds === 0 ) {
-              this.timerAmountSeconds = 60;
-              this.timerAmountMinutes -= 1;
-            }
-            if(this.timerAmountMinutes === 0 ) {
-              clearInterval(this.minutesInterval);
-              this.timerAmountSeconds = 0;
-              this.timerAmountMinutes = 0;
-              this.timerRunning = false;
-              setTimeout(
-                () => {
-                  var audio = new Audio('./sounds/alarm.mp3');
-                  audio.volume = 1;
-                  audio.play();
-                }, 100 );
-
-            }
-          }
-        }
-      })
-
-    </script>
+    <script type="text/javascript" src="timer.js">  </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
