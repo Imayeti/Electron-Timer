@@ -21,7 +21,6 @@
     methods: {
 
       startTimer() {
-        // let timeInputField = document.getElementById('timerAmountMinutes').value;
 
         if(this.inputValue){
           this.timerAmountSeconds = 60;
@@ -30,7 +29,6 @@
           console.log("this.timerAmountMinutes", this.timerAmountMinutes);
         }
 
-        // this.timerAmountSeconds = this.timerAmountMinutes * 60;
         if (!this.timerRunning) {
          this.timerAmountSeconds = 60;
          this.minutesInterval = setInterval( () => {
